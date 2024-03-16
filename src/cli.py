@@ -70,7 +70,7 @@ def handle_password_management(user_id):
             passwords = password_utils.get_passwords(user_id)
             if passwords:
                 print("Saved Passwords:")
-                for website, username, password, notes in passwords:
+                for website, username, password, notes, _ in passwords:
                     print(
                         f"Website: {website}, Username: {username}, Password: {password}, Notes: {notes}"
                     )

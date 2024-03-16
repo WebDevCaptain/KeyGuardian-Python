@@ -4,6 +4,7 @@ Module containing functions for user authentication (login and account creation)
 
 import sqlite3
 import hashlib
+import session
 
 # SQLite db path
 DB_FILE = "../db/key-guardian.db"
@@ -72,6 +73,7 @@ def login(username, password):
 
     if user:
         print(f"Welcome {username}")
+        session.SESSION_KEY = password
         return user[0]
     else:
         print("Invalid username and password combination.")
