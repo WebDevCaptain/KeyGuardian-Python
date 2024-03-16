@@ -87,7 +87,7 @@ def delete_password(user_id, website):
     cursor = conn.cursor()
 
     cursor.execute(
-        "DELETE FROM passwords WHERE user_id = ? AND website = ?", user_id, website
+        "DELETE FROM passwords WHERE user_id = ? AND website = ?", (user_id, website)
     )
 
     conn.commit()
