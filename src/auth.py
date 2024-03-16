@@ -68,8 +68,6 @@ def login(username, password):
     )
     user_id = cursor.fetchone()
 
-    print(f"DEBUG: Tried to fetch {username} with password {hashed_password}")
-
     conn.close()
 
     if user_id:
