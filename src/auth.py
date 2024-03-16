@@ -66,13 +66,13 @@ def login(username, password):
         "SELECT id FROM users WHERE username = ? AND password = ?",
         (username, hashed_password),
     )
-    user_id = cursor.fetchone()
+    user = cursor.fetchone()
 
     conn.close()
 
-    if user_id:
+    if user:
         print(f"Welcome {username}")
-        return True
+        return user[0]
     else:
         print("Invalid username and password combination.")
-        return False
+        return None

@@ -16,9 +16,15 @@ def decrypt_password(encrypted_password):
     return encrypted_password[::-1]
 
 
+def store_password(user_id, website, username, password, notes=""):
+    """Store a new password."""
+    encrypted_password = encrypt_password(password)
+    storage.store_password(user_id, website, username, encrypted_password, notes)
+
+
 def get_passwords(user_id):
     """Retrieves all passwords for a user."""
-    passwords = storage.get_passwords()
+    passwords = storage.get_passwords(user_id)
     decrypted_passwords = [
         (website, username, decrypt_password(password), notes)
         for website, username, password, notes in passwords
