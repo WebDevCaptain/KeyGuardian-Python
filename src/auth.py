@@ -63,13 +63,15 @@ def login(username, password):
     hashed_password = hash_password(password)
 
     cursor.execute(
-        "SELECT id FROM users WHERE username = ? AND password = ?", (username, password)
+        "SELECT id FROM users WHERE username = ? AND password = ?", (username, hashed_password)
     )
     user_id = cursor.fetchone()
 
+    print(f'DEBUG: Tried to fetch {username} with password {hashed_password}')
+
     conn.close()
 
-    if user:
+    if user_id:
         print(f"Welcome {username}")
         return True
     else:
